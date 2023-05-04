@@ -38,4 +38,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// set mongodb connection
+
+const mongoose = require('mongoose');
+const mongoDB = "mongodb://localhost:27017";
+mongoose.connect(mongoDB).catch((error)=>{
+  console.error(error)
+})
+
 module.exports = app;
