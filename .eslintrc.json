@@ -1,0 +1,16 @@
+{
+  "plugins": ["spellcheck"],
+  "rules": {
+    "spellcheck/spell-checker": [2, {
+      "comments": true,
+      "strings": false,
+      "identifiers": false,
+      "lang": "en_US",
+      "skipWords": ["skip", "these", "words"]
+    }]
+  },
+  "parserOptions": {
+      "ecmaVersion": "latest"
+  }
+
+}

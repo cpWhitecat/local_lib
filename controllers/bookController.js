@@ -1,4 +1,4 @@
-const Book = requrie('/mongodb/models/book.js')
+const Book = require('../mongodb/models/book.js')
 
 
 exports.index = (req,res)=>{
@@ -39,8 +39,8 @@ exports.book_update_get = (req,res)=>{
     res.send('realistic get function by update')
 }
 
-exports.book_update_get = (req,res)=>{
-    res.send('realistic get function by update')
+exports.book_update_post = (req,res)=>{
+    res.send('realistic post function by update')
 }
 
 

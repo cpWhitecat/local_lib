@@ -1,3 +1,4 @@
+/* eslint-disable spellcheck/spell-checker */
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,6 +9,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var wikiRouter = require('./routes/wiki');
+var catelogRouter= require('./routes/catelog');
 
 var app = express();
 
@@ -24,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/wiki',wikiRouter);
+app.use('/catelog',catelogRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

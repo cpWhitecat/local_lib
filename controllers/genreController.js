@@ -1,4 +1,5 @@
-const Genre = requrie('/mongodb/models/genre.js')
+/* eslint-disable spellcheck/spell-checker */
+const Genre = require('../mongodb/models/genre.js')
 
 // show all genre 
 exports.genre_list = (req,res)=>{
@@ -33,8 +34,8 @@ exports.genre_update_get = (req,res)=>{
     res.send('realistic get function by update')
 }
 
-exports.genre_update_get = (req,res)=>{
-    res.send('realistic get function by update')
+exports.genre_update_post = (req,res)=>{
+    res.send('realistic post function by update')
 }
 
 

@@ -1,4 +1,5 @@
-const BookInstance = requrie('/mongodb/models/bookInstance.js')
+/* eslint-disable spellcheck/spell-checker */
+const BookInstance = require('../mongodb/models/bookInstance.js')
 
 // show all bookInstance 
 exports.bookInstance_list = (req,res)=>{
@@ -33,8 +34,8 @@ exports.bookInstance_update_get = (req,res)=>{
     res.send('realistic get function by update')
 }
 
-exports.bookInstance_update_get = (req,res)=>{
-    res.send('realistic get function by update')
+exports.bookInstance_update_post = (req,res)=>{
+    res.send('realistic post function by update')
 }
 
 

@@ -1,4 +1,5 @@
-const Author = requrie('/mongodb/models/author.js')
+/* eslint-disable spellcheck/spell-checker */
+const Author = require('../mongodb/models/author.js')
 
 // show all author 
 exports.author_list = (req,res)=>{
@@ -29,12 +30,13 @@ exports.author_delete_post = (req,res)=>{
 }
 
 // update author
+// eslint-disable-next-line spellcheck/spell-checker
 exports.author_update_get = (req,res)=>{
     res.send('realistic get function by update')
 }
 
-exports.author_update_get = (req,res)=>{
-    res.send('realistic get function by update')
+exports.author_update_post = (req,res)=>{
+    res.send('realistic post function by update')
 }
 
 
