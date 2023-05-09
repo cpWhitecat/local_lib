@@ -6,12 +6,13 @@ const genreSchema = new Schema({
         type:String,
         required:true,
         min:3,
-        max:100
+        max:100,
+        enum:['affection','military','fiction','documentary'],
     }
 })
 
 genreSchema.virtual('url').get(()=>{
-    return this.name
+    return "/catelog/genre"+this._id
 })
 
 module.exports=mongoose.model('genre',genreSchema)
