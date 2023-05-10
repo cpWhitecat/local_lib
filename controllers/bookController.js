@@ -13,6 +13,7 @@ exports.book_list = (req,res)=>{
 
 // show book information
 exports.book_detail = (req,res)=>{
+    res.send('this is book'+req.params.id)
     req.params.id
 }
 

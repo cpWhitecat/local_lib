@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const authorSchema = new Schema({
-    _id:Schema.Types.ObjectId,
     first_name:{
-        type:String,required:true,max:10
+        type:String,required:true,max:100
     },
-    last_name:{
-        type:String,required:true,max:10
+    family_name:{
+        type:String,required:true,max:100
     },
     date_of_brith:{
         type:Date
@@ -25,6 +24,6 @@ authorSchema.virtual('lifespan').get(()=>{
 })
 
 authorSchema.virtual('url').get(()=>{
-    return this._id
+    return '/catalog/author/' + this._id
 })
 module.exports=mongoose.model('author',authorSchema)

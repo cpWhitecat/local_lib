@@ -8,6 +8,7 @@ exports.author_list = (req,res)=>{
 
 // show author information
 exports.author_detail = (req,res)=>{
+    res.send('author id'+req.params.id)
     req.params.id
 }
 

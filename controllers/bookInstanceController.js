@@ -8,7 +8,8 @@ exports.bookInstance_list = (req,res)=>{
 
 // show bookInstance information
 exports.bookInstance_detail = (req,res)=>{
-    req.params.id
+    res.send('this this id '+req.params.id)
+    
 }
 
 // create bookInstance

@@ -8,6 +8,7 @@ exports.genre_list = (req,res)=>{
 
 // show genre information
 exports.genre_detail = (req,res)=>{
+    res.send('genre id')
     req.params.id
 }
 
