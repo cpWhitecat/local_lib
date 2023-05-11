@@ -15,9 +15,9 @@
     "@types/babel-types" "*"
 
 "@types/node@*":
-  "integrity" "sha512-uKBEevTNb+l6/aCQaKVnUModfEMjAl98lw2Si9P5y4hLu9tm6AlX2ZIoXZX6Wh9lJueYPrGPKk5WMCNHg/u6/A=="
-  "resolved" "https://registry.npmjs.org/@types/node/-/node-20.1.1.tgz"
-  "version" "20.1.1"
+  "integrity" "sha512-CTO/wa8x+rZU626cL2BlbCDzydgnFNgc19h4YvizpTO88MFQxab8wqisxaofQJ/9bLGugRdWIuX/TbIs6VVF6g=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-20.1.2.tgz"
+  "version" "20.1.2"
 
 "@types/webidl-conversions@*":
   "integrity" "sha512-xTE1E+YF4aWPJJeUzaZI5DRntlkY3+BCVJi0axFptnjGmAoWxkyREIh/XMrfxVLejwQxMCfDXdICo0VLxThrog=="
@@ -306,6 +306,19 @@
   "resolved" "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   "version" "1.8.1"
 
+"express-async-handler@^1.2.0":
+  "integrity" "sha512-rCSVtPXRmQSW8rmik/AIb2P0op6l7r1fMW538yyvTMltCO4xQEWMmobfrIxN2V1/mVrgxB8Az3reYF6yUZw37w=="
+  "resolved" "https://registry.npmjs.org/express-async-handler/-/express-async-handler-1.2.0.tgz"
+  "version" "1.2.0"
+
+"express-validator@^7.0.1":
+  "integrity" "sha512-oB+z9QOzQIE8FnlINqyIFA8eIckahC6qc8KtqLdLJcU3/phVyuhXH3bA4qzcrhme+1RYaCSwrq+TlZ/kAKIARA=="
+  "resolved" "https://registry.npmjs.org/express-validator/-/express-validator-7.0.1.tgz"
+  "version" "7.0.1"
+  dependencies:
+    "lodash" "^4.17.21"
+    "validator" "^13.9.0"
+
 "express@~4.16.1":
   "integrity" "sha512-j12Uuyb4FMrd/qQAm6uCHAkPtO8FDTRJZBDd5D2KOL2eLaz1yUNdUB/NOIyq0iU4q4cFarsUCrnFDPBcnksuOg=="
   "resolved" "https://registry.npmjs.org/express/-/express-4.16.4.tgz"
@@ -498,7 +511,7 @@
   "resolved" "https://registry.npmjs.org/lazy-cache/-/lazy-cache-1.0.4.tgz"
   "version" "1.0.4"
 
-"lodash@^4.17.4":
+"lodash@^4.17.21", "lodash@^4.17.4":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
@@ -970,6 +983,11 @@
   "integrity" "sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA=="
   "resolved" "https://registry.npmjs.org/utils-merge/-/utils-merge-1.0.1.tgz"
   "version" "1.0.1"
+
+"validator@^13.9.0":
+  "integrity" "sha512-B+dGG8U3fdtM0/aNK4/X8CXq/EcxU2WPrPEkJGslb47qyHsxmbggTWK0yEA4qnYVNF+nxNlN88o14hIcPmSIEA=="
+  "resolved" "https://registry.npmjs.org/validator/-/validator-13.9.0.tgz"
+  "version" "13.9.0"
 
 "vary@~1.1.2":
   "integrity" "sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg=="
