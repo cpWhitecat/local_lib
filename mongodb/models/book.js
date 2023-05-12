@@ -28,7 +28,7 @@ const bookSchema = new Schema({
 
 // return book url
 bookSchema.virtual('url').get(()=>{
-  return this._id
+  return 'catalog/' + this._id
 })
 
 module.exports=mongoose.model('book',bookSchema)

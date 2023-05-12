@@ -17,13 +17,26 @@ const authorSchema = new Schema({
 })
 
 
-authorSchema.virtual('name').get(()=>this.first_name + '•' + this.last_name)
+authorSchema.virtual('name').get(()=>{
+    
+    
+    const entireName = this.first_name + '•' + this.family_name
 
-authorSchema.virtual('lifespan').get(()=>{
-    return (this.date_of_death.getYear()-this.date_of_brith.getYear()).toString();
+    console.log(entireName)
+    
+    return entireName
 })
+
+authorSchema.virtual("name").get(function(){   
+// can't use ()=>{} in virtual property 
+// this inherited outside area
+    console.log(this) 
+    return this.family_name + "," + this.first_name;
+  })
 
 authorSchema.virtual('url').get(()=>{
     return '/catalog/author/' + this._id
 })
 module.exports=mongoose.model('author',authorSchema)
+
+
