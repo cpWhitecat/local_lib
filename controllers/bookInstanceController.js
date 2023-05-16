@@ -1,10 +1,18 @@
 /* eslint-disable spellcheck/spell-checker */
+const expressAsyncHandler = require('express-async-handler')
 const BookInstance = require('../mongodb/models/bookInstance.js')
 
 // show all bookInstance 
-exports.bookInstance_list = (req,res)=>{
-    res.send('echo bookInstance list ')
-}
+exports.bookInstance_list = expressAsyncHandler(async (req,res,next)=>{
+    const bookInstance = await BookInstance.find().populate('book').exec();    
+    // fix : model Book undefinded , see doc , the populate parm show defined to `ref` of property when the parm is a model
+
+    res.render('bookInstance_list',{
+        title:'book instance list',
+        bookinstance_list:bookInstance
+    })
+
+})
 
 // show bookInstance information
 exports.bookInstance_detail = (req,res)=>{
