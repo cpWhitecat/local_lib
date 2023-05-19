@@ -1,10 +1,17 @@
 /* eslint-disable spellcheck/spell-checker */
-const Author = require('../mongodb/models/author.js')
+const {Author,DeadAuthor} = require('../mongodb/models/author.js')
+const expressAsyncHandler = require('express-async-handler')
+
 
 // show all author 
-exports.author_list = (req,res)=>{
-    res.send('echo author list ')
-}
+exports.author_list = expressAsyncHandler(async (req,res,next)=>{
+    const author_list = await DeadAuthor.find({}).exec()
+    
+    res.render('author_list',{
+        title:"Author List",
+        allAuthorList:author_list
+    })
+})
 
 // show author information
 exports.author_detail = (req,res)=>{
