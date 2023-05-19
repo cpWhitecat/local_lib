@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
-
+const {DateTime}= require('luxon')
 // const option = {
 //     discriminatorKey:'kind'
 // }
@@ -53,13 +53,29 @@ authorSchema.virtual('name').get(function(){
 //     // console.log(this) 
 //     return this.family_name + "," + this.first_name;
 //   })
+authorSchema.virtual('lifeSpanTime').get(function(){
+    const formatted_birth = this.date_of_birth 
+    ? DateTime.fromJSDate(this.date_of_birth).toISODate() 
+    : '';
 
+    const formatted_death = this.date_of_birth 
+    ? DateTime.fromJSDate(this.date_of_birth).toISODate() 
+    : '';
+
+    if(formatted_birth ==''){
+        return '出生日不详';
+    }
+
+    // We know the author birth day and the anthor is living
+    return formatted_birth.toString() + '至' + formatted_death.toString()
+
+})
 
 authorSchema.virtual('url').get(function(){
     return '/catalog/author/' + this._id
 })
 const author = mongoose.model('author',authorSchema)
-const test1 = new author({first_name:'lsfjle',family_name:'jfkelk',date_of_birth:'1984-01-19',date_of_death:false})
+// const test1 = new author({first_name:'lsfjle',family_name:'jfkelk',date_of_birth:'1984-01-19',date_of_death:false})
 
 // console.log(test1+'--------------')
 // const deadAuthor = author.discriminator('dead',new Schema({'living':{

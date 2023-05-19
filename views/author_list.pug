@@ -7,7 +7,7 @@ block content
     each author in allAuthorList 
         li 
             a(href=author.url) #{author.name}
-            | (#{author.date_of_brith} - #{author.date_of_death}) 
-    
+            | (#{author.lifeSpanTime}) 
+
     else 
         li There are no authors.
