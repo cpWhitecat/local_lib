@@ -1,5 +1,6 @@
 /* eslint-disable spellcheck/spell-checker */
 const Genre = require('../mongodb/models/genre.js')
+const Book = require('../mongodb/models/book.js')
 const AsyncHandler = require('express-async-handler')
 
 
@@ -15,10 +16,30 @@ exports.genre_list = AsyncHandler(async (req,res,next)=>{
 })
 
 // show genre information
-exports.genre_detail = (req,res)=>{
-    res.send('genre id')
-    req.params.id
-}
+exports.genre_detail = AsyncHandler(async (req,res,next)=>{
+    const [genre , bookInGenre] = await Promise.all([
+        Genre.findById(req.params.id).exec(),
+        Book.find({genre:req.params.id},'title summary').exec()
+    ])
+    
+// when Genre doesn't found
+
+    console.log(bookInGenre+'----')
+    if(genre == null) {
+        const error = new Error(`Genre is ${genre},Doesn't found genre.`)
+        error.status = 404
+
+        return next(error)
+    }
+
+
+    res.render('genre_detail',{
+        title:'Genre Detail',
+        genre:genre,
+        genreBook:bookInGenre
+    })
+
+})
 
 // create genre
 exports.genre_create_get = (req,res)=>{
