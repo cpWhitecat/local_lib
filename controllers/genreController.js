@@ -1,10 +1,18 @@
 /* eslint-disable spellcheck/spell-checker */
 const Genre = require('../mongodb/models/genre.js')
+const AsyncHandler = require('express-async-handler')
+
 
 // show all genre 
-exports.genre_list = (req,res)=>{
-    res.send('echo genre list ')
-}
+exports.genre_list = AsyncHandler(async (req,res,next)=>{
+    const genreList = await Genre.find().sort().exec();
+
+
+    res.render('genre_list',{
+        title:'Genre List',
+        GenreList:genreList
+    })
+})
 
 // show genre information
 exports.genre_detail = (req,res)=>{
