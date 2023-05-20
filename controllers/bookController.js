@@ -33,14 +33,14 @@ exports.index = asyncHandler(async (req,res,next)=>{
 // show all book 
 exports.book_list = asyncHandler(async (req,res,next)=>{
     const books = await Book.find({},'title author').populate('author').exec();
-    // console.log(JSON.stringify(books))
+
     res.render('book_list',{title:'Book List',book_list:books})
 })
 
 // show book information
 exports.book_detail = (req,res)=>{
     res.send('this is book'+req.params.id)
-    req.params.id
+
 }
 
 // create book
