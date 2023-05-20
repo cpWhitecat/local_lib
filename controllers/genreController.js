@@ -24,7 +24,6 @@ exports.genre_detail = AsyncHandler(async (req,res,next)=>{
     
 // when Genre doesn't found
 
-    console.log(bookInGenre+'----')
     if(genre == null) {
         const error = new Error(`Genre is ${genre},Doesn't found genre.`)
         error.status = 404
@@ -42,31 +41,31 @@ exports.genre_detail = AsyncHandler(async (req,res,next)=>{
 })
 
 // create genre
-exports.genre_create_get = (req,res)=>{
+exports.genre_create_get = AsyncHandler(async (req,res,next)=>{
     res.send('realistic get function by create')
-}
+})
 
-exports.genre_create_post = (req,res)=>{
+exports.genre_create_post = AsyncHandler(async (req,res,next)=>{
     res.send('realistic post function by create')
-}
+})
 
 // delete genre form
-exports.genre_delete_get = (req,res)=>{
+exports.genre_delete_get = AsyncHandler(async (req,res,next)=>{
     res.send('realistic get function by delete')
-}
+})
 
-exports.genre_delete_post = (req,res)=>{
+exports.genre_delete_post = AsyncHandler(async (req,res,next)=>{
     res.send('realistic post function by delete')
-}
+})
 
 // update genre
-exports.genre_update_get = (req,res)=>{
+exports.genre_update_get = AsyncHandler(async (req,res,next)=>{
     res.send('realistic get function by update')
-}
+})
 
-exports.genre_update_post = (req,res)=>{
+exports.genre_update_post = AsyncHandler(async (req,res,next)=>{
     res.send('realistic post function by update')
-}
+})
 
 
 

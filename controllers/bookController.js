@@ -3,10 +3,10 @@ const Author = require('../mongodb/models/author.js')
 const BookInstance = require('../mongodb/models/bookInstance.js')
 const Genre = require('../mongodb/models/genre.js')
 
-const asyncHandler = require('express-async-handler');
+const AsyncHandler = require('express-async-handler');
 
 
-exports.index = asyncHandler(async (req,res,next)=>{
+exports.index = AsyncHandler(async (req,res,next)=>{
     const [
         bookCount,
         bookInstanceCount,
@@ -31,43 +31,51 @@ exports.index = asyncHandler(async (req,res,next)=>{
 
 
 // show all book 
-exports.book_list = asyncHandler(async (req,res,next)=>{
+exports.book_list = AsyncHandler(async (req,res,next)=>{
     const books = await Book.find({},'title author').populate('author').exec();
 
     res.render('book_list',{title:'Book List',book_list:books})
 })
 
 // show book information
-exports.book_detail = (req,res)=>{
-    res.send('this is book'+req.params.id)
+exports.book_detail = AsyncHandler(async (req,res,next)=>{
+    const [book,bookInstance] = await Promise.all([
+        Book.findById(req.params.id).populate('author').populate('genre').exec(),
+        BookInstance.find({'book':req.params.id}).populate('book').exec()
+    ])
 
-}
+    res.render('book_detail',{
+        title:'Book Detail',
+        book:book,
+        bookInstance:bookInstance
+    })
+})
 
 // create book
-exports.book_create_get = (req,res)=>{
+exports.book_create_get = AsyncHandler(async (req,res,next)=>{
     res.send('realistic get function by create')
-}
+})
 
-exports.book_create_post = (req,res)=>{
+exports.book_create_post = AsyncHandler(async (req,res,next)=>{
     res.send('realistic post function by create')
-}
+})
 
 // delete book form
-exports.book_delete_get = (req,res)=>{
+exports.book_delete_get = AsyncHandler(async (req,res,next)=>{
     res.send('realistic get function by delete')
-}
+})
 
-exports.book_delete_post = (req,res)=>{
+exports.book_delete_post = AsyncHandler(async (req,res,next)=>{
     res.send('realistic post function by delete')
-}
+})
 
 // update book
-exports.book_update_get = (req,res)=>{
+exports.book_update_get = AsyncHandler(async (req,res,next)=>{
     res.send('realistic get function by update')
-}
+})
 
-exports.book_update_post = (req,res)=>{
+exports.book_update_post = AsyncHandler(async (req,res,next)=>{
     res.send('realistic post function by update')
-}
+})
 
 
