@@ -1,6 +1,8 @@
 /* eslint-disable spellcheck/spell-checker */
 const Author = require('../mongodb/models/author.js')
+const Book = require('../mongodb/models/book.js')
 const AsyncHandler = require('express-async-handler')
+const { isError } = require('../utils/index.js')
 
 
 // show all author 
@@ -15,8 +17,21 @@ exports.author_list = AsyncHandler(async (req,res,next)=>{
 
 // show author information
 exports.author_detail = AsyncHandler(async (req,res,next)=>{
-    res.send('author id'+req.params.id)
-    req.params.id
+    const [author,author_books] = await Promise.all([
+        Author.findById(req.params.id).exec(),
+        Book.find({author:req.params.id},'title summary').exec()
+    ])
+
+
+    if(author && author_books){
+        res.render('author_detail',{
+            title:"Author",
+            author_name:author,
+            books:author_books
+        })
+    }else{
+        isError(req,404,`Can't found author and some books by author`,next)
+    }
 })
 
 // create author
