@@ -27,7 +27,8 @@ bookInstanceSchema
 bookInstanceSchema
   .virtual('due_back_formatted')
   .get(function(){
-    return DateTime.fromJSDate(this.due_back).setLocale('zh').toLocaleString(DateTime.DATE_MED)
+    const formattedTime = DateTime.fromJSDate(this.due_back).setLocale('zh').toLocaleString(DateTime.DATE_MED)
+    return formattedTime
   })
 
 // 导出 BookInstancec 模型

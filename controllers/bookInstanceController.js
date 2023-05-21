@@ -1,7 +1,8 @@
 /* eslint-disable spellcheck/spell-checker */
 const AsyncHandler = require('express-async-handler')
-const BookInstance = require('../mongodb/models/bookInstance.js')
-const Book =require('../mongodb/models/book.js')
+const BookInstance = require('../mongodb/models/bookInstance.js');
+const { isError } = require('../utils/index.js');
+
 
 // show all bookInstance 
 exports.bookInstance_list = AsyncHandler(async (req,res,next)=>{
@@ -17,14 +18,17 @@ exports.bookInstance_list = AsyncHandler(async (req,res,next)=>{
 
 // show bookInstance information
 exports.bookInstance_detail = AsyncHandler(async (req,res,next)=>{
-    const allBookInstance = await Book.findById(req.params.id).populate('book').exec()
+    const allBookInstance = await BookInstance.findById(req.params.id).populate('book').exec()
 
-
-
-    res.render('bookInstance_detail',{
-        title:'Book Instance List',
-        book:allBookInstance
-    })
+    if(allBookInstance){
+        res.render('bookInstance_detail',{
+            title:'Book Instance List',
+            bookinstance:allBookInstance
+        })
+    }else{
+        isError(req,404,`Can't found Book Instance `,next)
+    }
+    
 })
 
 // create bookInstance
