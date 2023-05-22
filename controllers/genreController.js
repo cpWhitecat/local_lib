@@ -71,7 +71,14 @@ exports.genre_create_post = [
             // the data is valid
 
             const hasGenre = await Genre.findOne({name:req.body.name}).exec()
-            res.redirect(genre.url)
+
+            // when genre is existing
+            if(hasGenre){
+                res.redirect(genre.url)
+            }else{
+                genre.save()
+                res.redirect(genre.url)
+            }
         }
     })
 ]
