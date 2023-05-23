@@ -4,15 +4,45 @@ const Book = require('../mongodb/models/book.js')
 const AsyncHandler = require('express-async-handler')
 const { body, validationResult } = require('express-validator');
 const { lengthLimited } = require('../utils/index.js');
+const genre = require('../mongodb/models/genre.js');
 
 // show all genre 
 exports.genre_list = AsyncHandler(async (req,res,next)=>{
     const genreList = await Genre.find().sort().exec();
 
+    
+    const GenreCount = (function getResult() {
+        const genreListResult ={}
+    // const and let
+        const result = async function(){
+            for (const el of genreList){
+                const result = await Book.find({genre:el._id}).exec()
+                genreListResult[el._id]=result.length
+            };
+        }
+
+        return {
+            getList:function(){
+                return result()
+            },
+
+            value:function(){
+                return genreListResult
+            }
+        }
+
+    })()
+
+    /**
+     * Want to show count for every summary
+    */
+    await GenreCount.getList(genreList)
+
 
     res.render('genre_list',{
         title:'Genre List',
-        GenreList:genreList
+        GenreList:genreList,
+        GenreListResult:GenreCount.value()
     })
 })
 
