@@ -5,4 +5,4 @@ block content
     ul 
     each genre in GenreList 
         li 
-            a(href=genre.url) #{genre.name} | #{genre.url}
+            a(href=genre.url) #{genre.name} | #{GenreListResult[genre._id]}
