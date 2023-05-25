@@ -2,7 +2,8 @@
 const Author = require('../mongodb/models/author.js')
 const Book = require('../mongodb/models/book.js')
 const AsyncHandler = require('express-async-handler')
-const { isError } = require('../utils/index.js')
+const { isError, lengthLimited } = require('../utils/index.js')
+const { body, validationResult } = require('express-validator')
 
 
 // show all author 
@@ -36,12 +37,53 @@ exports.author_detail = AsyncHandler(async (req,res,next)=>{
 
 // create author
 exports.author_create_get = AsyncHandler(async (req,res,next)=>{
-    res.send('realistic get function by create')
+    res.render('author_form',{
+        title:"Create Author"
+    })
 })
 
-exports.author_create_post = AsyncHandler(async (req,res,next)=>{
-    res.send('realistic post function by create')
-})
+exports.author_create_post = [
+    lengthLimited("first_name",{min:1})
+        .withMessage('first name must be specified')
+        .isAlphanumeric()
+        .withMessage('first name has non alphanumeric characters'),
+    lengthLimited("family_name",{min:1})
+        .withMessage('family name must be specified')
+        .isAlphanumeric()
+        .withMessage('family name has non alphanumeric characters'),
+    body('date_of_birth')
+        .optional({values:false})
+        .isISO8601()
+        .toDate(),
+    body('date_of_death')
+        .optional({values:false})
+        .isISO8601()
+        .toDate(),
+    AsyncHandler(async (req,res,next)=>{
+        const errors = validationResult(req)
+
+        const author = new Author({
+            first_name:req.body.first_name,
+            family_name:req.body.family_name,
+            date_of_birth:req.body.date_of_birth,
+            date_of_death:req.body.date_of_death,
+        })
+
+        if(errors.isEmpty()){
+            res.render('author_form',{
+                title:"Author Create",
+                author:author,
+                errors:errors.array()
+            })
+
+            return ;
+        }else{
+            await author.save()
+            res.redirect(author.url)
+        }
+        
+    })
+]
 
 // delete author form
 exports.author_delete_get = AsyncHandler(async (req,res,next)=>{
