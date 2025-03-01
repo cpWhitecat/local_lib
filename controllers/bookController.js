@@ -4,6 +4,7 @@ const BookInstance = require('../mongodb/models/bookInstance.js')
 const Genre = require('../mongodb/models/genre.js')
 
 const AsyncHandler = require('express-async-handler');
+const { body } = require('express-validator');
 
 
 exports.index = AsyncHandler(async (req,res,next)=>{
@@ -56,9 +57,9 @@ exports.book_create_get = AsyncHandler(async (req,res,next)=>{
     res.send('realistic get function by create')
 })
 
-exports.book_create_post = AsyncHandler(async (req,res,next)=>{
-    res.send('realistic post function by create')
-})
+exports.book_create_post = [
+    // body.
+]
 
 // delete book form
 exports.book_delete_get = AsyncHandler(async (req,res,next)=>{
