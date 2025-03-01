@@ -1,0 +1,38 @@
+[
+    {
+      "title": "The Great Gatsby",
+      "author": "6159eae68f092a001f2d1562",
+      "summary": "A story about wealth, love, and the American Dream.",
+      "isbn": "9780743273565",
+      "genre": ["6159eae68f092a001f2d1563"]
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "6159eae68f092a001f2d1564",
+      "summary": "A powerful novel depicting racial injustice in the Deep South.",
+      "isbn": "9780061120084",
+      "genre": ["6159eae68f092a001f2d1563", "6159eae68f092a001f2d1565"]
+    },
+    {
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "6159eae68f092a001f2d1566",
+      "summary": "The first book in the Harry Potter series, following the journey of a young wizard.",
+      "isbn": "9780590353427",
+      "genre": ["6159eae68f092a001f2d1563", "6159eae68f092a001f2d1567"]
+    },
+    {
+      "title": "The Hobbit",
+      "author": "6159eae68f092a001f2d1568",
+      "summary": "An adventure-filled tale set in Middle-earth, featuring Bilbo Baggins and a group of dwarves.",
+      "isbn": "9780547928227",
+      "genre": ["6159eae68f092a001f2d1563", "6159eae68f092a001f2d1569"]
+    },
+    {
+      "title": "The Catcher in the Rye",
+      "author": "6159eae68f092a001f2d156a",
+      "summary": "A coming-of-age story that explores themes of teenage angst and identity.",
+      "isbn": "9780316769488",
+      "genre": ["6159eae68f092a001f2d156b"]
+    }
+  ]
+  
