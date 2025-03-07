@@ -46,7 +46,8 @@ app.use(function(err, req, res, next) {
 // set mongodb connection
 
 const mongoose = require('mongoose');
-const mongoDB = "mongodb://localhost:27017";
+const mongoDB = "mongodb://127.0.0.1:27017"; 
+// // when you should run local mongodb on your laptop, I should install commmunity and shell version, it must be installed as well
 mongoose.connect(mongoDB).catch((error)=>{
   console.error(error)
 })
